@@ -1,0 +1,30 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version '1.3.72'
+    id 'com.github.johnrengelman.shadow' version '6.0.0'
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+    compile 'net.dv8tion:JDA:4.2.0_183'
+    compile group: 'com.github.oshi', name: 'oshi-core', version: '3.8.0'
+    implementation 'com.sedmelluq:lavaplayer:1.3.50'
+}
+
+shadowJar {
+    manifest {
+        attributes 'Main-Class': 'juice.bot.JuiceKt'
+    }
+}
+
+compileKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+}
